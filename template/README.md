@@ -24,16 +24,17 @@
 
 ``` bash
 # 初始化项目
-vue init ./mpapp_template myproject
+vue init yoyoyard/mpapp_template myproject
 cd myproject
 
 # 安装依赖
 yarn
 
+# 启动 Graphql server mocker
+npm run api
+
 # 开发时构建
 npm dev
-
-# 启动 Graphql server mocker
 
 # 打包构建
 npm build
