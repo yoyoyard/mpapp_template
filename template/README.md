@@ -23,8 +23,14 @@
 ## Build Setup
 
 ``` bash
+# 编辑器
+推荐使用 VSCODE, 安装插件 ESLint, Prettier, Vetur
+```
+
+``` bash
 # 初始化项目
-vue init yoyoyard/mpapp_template myproject
+git clone https://github.com/yoyoyard/mpapp_template ~/.vue-templates/simple
+vue init simple my-project --offline
 cd myproject
 
 # 安装依赖
