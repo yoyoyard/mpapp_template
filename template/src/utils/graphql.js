@@ -1,6 +1,7 @@
 import { ApolloClient } from "apollo-client";
-import { createHttpLink } from "apollo-link-http";
+import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloLink, concat } from "apollo-link";
 import { baseUrl } from "@/static/BaseURL";
 
 const fetch = function(url, options = {}) {
@@ -23,13 +24,26 @@ const fetch = function(url, options = {}) {
   });
 };
 
-export default new ApolloClient({
-  // Provide the URL to the API server.
-  link: createHttpLink({
-    uri: baseUrl,
-    fetch: fetch
-  }),
-  // Using a cache for blazingly
-  // fast subsequent queries.
-  cache: new InMemoryCache()
+const httpLink = new HttpLink({
+  uri: baseUrl,
+  fetch: fetch
 });
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  const token = wx.getStorageSync("authorization") || null;
+  operation.setContext({
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  return forward(operation);
+});
+
+const apolloClient = new ApolloClient({
+  link: concat(authMiddleware, httpLink),
+  cache: new InMemoryCache(),
+  connectToDevTools: true
+});
+
+export default apolloClient;
+
