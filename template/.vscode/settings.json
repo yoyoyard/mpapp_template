@@ -1,24 +1,31 @@
 {
-  "editor.formatOnSave": true,
-
-  "vetur.validation.template": false,
-  "vetur.format.defaultFormatter.scss": "prettier",
-  "vetur.format.defaultFormatter.css": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier",
-
-  "prettier.eslintIntegration": true,
-
   "eslint.autoFixOnSave": true,
-  "eslint.options": { "extensions": [".html", ".js", ".vue", ".jsx"] },
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
+  "eslint.options": {
+    "extensions": [
+      ".html",
+      ".js",
+      ".vue",
+      ".jsx"
+    ]
+  },
   "eslint.validate": [
-     "javascript",
-     "javascriptreact",
-     {
-       "language": "vue",
-       "autoFix": true
-     }
-  ],
-
-  "javascript.validate.enable": false,
-  "javascript.format.enable": false
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    }
+  ]
 }
