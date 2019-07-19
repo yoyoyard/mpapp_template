@@ -16,6 +16,7 @@ const getters = {
 
 // actions
 const actions = {
+  // eslint-disable-next-line standard/object-curly-even-spacing
   async fetchBook({ commit /*,  state, rootState */ }, id) {
     const response = await graphqlClient.query({
       query: gql`
@@ -34,6 +35,7 @@ const actions = {
     // Trigger the `setBook` mutation
     commit("setBook", response.data.book);
   },
+  // eslint-disable-next-line standard/object-curly-even-spacing
   async fetchBookList({ commit /*,  state, rootState */ }) {
     const response = await graphqlClient.query({
       query: gql`
